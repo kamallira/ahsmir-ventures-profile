@@ -23,113 +23,130 @@
     --border: #d4ddd6;
   }
 
+  html { overflow-x: hidden; }
+
   body {
     font-family: 'DM Sans', sans-serif;
     background: var(--off-white);
     color: var(--text-dark);
     font-size: 15px;
     line-height: 1.7;
+    overflow-x: hidden;
+    width: 100%;
   }
 
-  /* ── COVER PAGE ── */
+  /* ════════════════════════════
+     COVER — mobile first
+  ════════════════════════════ */
   .cover {
-    min-height: 100vh;
+    width: 100%;
+    min-height: 100svh;
     background: var(--green-deep);
     position: relative;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     overflow: hidden;
-    page-break-after: always;
   }
 
-  .cover-bg-circles {
+  .cover-accent-top {
     position: absolute;
-    inset: 0;
-    pointer-events: none;
-  }
-  .cover-bg-circles circle { opacity: 0.07; }
-
-  .cover-stripe {
-    position: absolute;
-    top: 0; right: 0;
-    width: 38%;
-    height: 100%;
-    background: var(--green-mid);
-    clip-path: polygon(18% 0, 100% 0, 100% 100%, 0% 100%);
-  }
-
-  .cover-gold-bar {
-    position: absolute;
-    top: 0; right: 0;
-    width: 6px;
-    height: 100%;
+    top: 0; right: 0; left: 0;
+    height: 5px;
     background: var(--gold);
+    z-index: 3;
   }
+
+  .cover-circle-1 {
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 220px; height: 220px;
+    border-radius: 50%;
+    background: var(--green-mid);
+    opacity: 0.5;
+  }
+
+  .cover-circle-2 {
+    position: absolute;
+    top: 60px; right: -30px;
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    background: var(--gold);
+    opacity: 0.12;
+  }
+
+  .cover-circle-3 {
+    position: absolute;
+    bottom: -40px; left: -40px;
+    width: 180px; height: 180px;
+    border-radius: 50%;
+    background: var(--green-fresh);
+    opacity: 0.15;
+  }
+
+  /* desktop-only decorative — hidden on mobile */
+  .cover-stripe, .cover-gold-bar, .cover-year { display: none; }
 
   .cover-content {
     position: relative;
     z-index: 2;
-    padding: 80px 72px;
+    padding: 40px 24px 52px;
   }
 
   .cover-tag {
     display: inline-block;
     background: var(--gold);
     color: #fff;
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 600;
     letter-spacing: 2.5px;
     text-transform: uppercase;
-    padding: 6px 16px;
+    padding: 5px 14px;
     border-radius: 2px;
-    margin-bottom: 28px;
+    margin-bottom: 22px;
   }
 
   .cover h1 {
     font-family: 'Playfair Display', serif;
-    font-size: 72px;
+    font-size: 42px;
     font-weight: 900;
     color: #fff;
     line-height: 1.05;
-    margin-bottom: 12px;
-    letter-spacing: -1px;
+    margin-bottom: 14px;
+    letter-spacing: -0.5px;
   }
 
-  .cover h1 span {
-    color: var(--gold);
-  }
+  .cover h1 span { color: var(--gold); }
 
   .cover-subtitle {
-    font-size: 16px;
+    font-size: 14px;
     color: rgba(255,255,255,0.65);
     font-weight: 300;
-    letter-spacing: 0.5px;
-    margin-bottom: 56px;
-    max-width: 400px;
+    margin-bottom: 36px;
+    line-height: 1.6;
   }
 
   .cover-divider {
-    width: 56px;
+    width: 44px;
     height: 3px;
     background: var(--gold);
-    margin-bottom: 40px;
+    margin-bottom: 28px;
   }
 
   .cover-meta {
-    display: flex;
-    gap: 48px;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px 16px;
   }
 
   .cover-meta-item {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 3px;
   }
 
   .cover-meta-item .label {
-    font-size: 10px;
+    font-size: 9px;
     letter-spacing: 2px;
     text-transform: uppercase;
     color: rgba(255,255,255,0.4);
@@ -137,129 +154,121 @@
   }
 
   .cover-meta-item .value {
-    font-size: 14px;
+    font-size: 13px;
     color: rgba(255,255,255,0.85);
     font-weight: 400;
   }
 
-  .cover-year {
-    position: absolute;
-    top: 56px;
-    right: 72px;
-    font-family: 'Playfair Display', serif;
-    font-size: 120px;
-    font-weight: 700;
-    color: rgba(255,255,255,0.04);
-    line-height: 1;
-    z-index: 1;
-    user-select: none;
-  }
-
-  /* ── LAYOUT ── */
+  /* ════════════════════════════
+     MAIN LAYOUT
+  ════════════════════════════ */
   .page {
-    max-width: 900px;
+    width: 100%;
+    max-width: 960px;
     margin: 0 auto;
-    padding: 72px 56px;
+    padding: 40px 20px;
   }
 
-  /* ── SECTION HEADERS ── */
+  /* ════════════════════════════
+     SECTION HEADERS
+  ════════════════════════════ */
   .section-label {
-    font-size: 10px;
+    font-size: 9px;
     font-weight: 600;
     letter-spacing: 3px;
     text-transform: uppercase;
     color: var(--gold);
-    margin-bottom: 10px;
+    margin-bottom: 8px;
   }
 
   .section-title {
     font-family: 'Playfair Display', serif;
-    font-size: 36px;
+    font-size: 26px;
     font-weight: 700;
     color: var(--green-deep);
     line-height: 1.2;
-    margin-bottom: 32px;
+    margin-bottom: 16px;
   }
 
   .section-divider {
-    width: 40px;
+    width: 36px;
     height: 3px;
     background: var(--green-fresh);
-    margin-bottom: 40px;
+    margin-bottom: 28px;
   }
 
-  /* ── ABOUT ── */
+  /* ════════════════════════════
+     ABOUT
+  ════════════════════════════ */
   .about-section {
     background: #fff;
     border-left: 4px solid var(--green-fresh);
-    padding: 48px 52px;
+    padding: 24px 20px;
     border-radius: 0 12px 12px 0;
-    box-shadow: 0 2px 24px rgba(15,74,42,0.06);
+    box-shadow: 0 2px 16px rgba(15,74,42,0.06);
   }
 
   .about-body {
-    font-size: 16px;
+    font-size: 14px;
     color: var(--text-mid);
-    line-height: 1.85;
-    max-width: 680px;
+    line-height: 1.8;
   }
 
-  .about-body p + p { margin-top: 18px; }
+  .about-body p + p { margin-top: 14px; }
 
   .about-stats {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    margin-top: 44px;
+    gap: 10px;
+    margin-top: 24px;
   }
 
   .stat-card {
     background: var(--green-pale);
     border: 1px solid var(--border);
     border-radius: 10px;
-    padding: 24px 20px;
+    padding: 14px 8px;
     text-align: center;
   }
 
   .stat-card .stat-num {
     font-family: 'Playfair Display', serif;
-    font-size: 38px;
+    font-size: 26px;
     font-weight: 700;
     color: var(--green-deep);
     line-height: 1;
-    margin-bottom: 6px;
+    margin-bottom: 4px;
   }
 
   .stat-card .stat-num span {
-    font-size: 22px;
+    font-size: 16px;
     color: var(--gold);
   }
 
   .stat-card .stat-label {
-    font-size: 12px;
+    font-size: 9px;
     text-transform: uppercase;
-    letter-spacing: 1.5px;
+    letter-spacing: 1px;
     color: var(--text-muted);
     font-weight: 500;
   }
 
-  /* ── VISION MISSION ── */
-  .vm-section {
-    margin-top: 72px;
-  }
+  /* ════════════════════════════
+     VISION & MISSION
+  ════════════════════════════ */
+  .vm-section { margin-top: 48px; }
 
   .vm-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 28px;
-    margin-top: 8px;
+    grid-template-columns: 1fr;
+    gap: 16px;
   }
 
   .vm-card {
     background: #fff;
     border-radius: 12px;
     border: 1px solid var(--border);
-    padding: 36px 32px;
+    padding: 24px 20px;
     position: relative;
     overflow: hidden;
   }
@@ -268,22 +277,20 @@
     content: '';
     position: absolute;
     top: 0; left: 0;
-    width: 100%;
-    height: 4px;
+    width: 100%; height: 4px;
   }
 
   .vm-card.vision::before { background: var(--green-fresh); }
   .vm-card.mission::before { background: var(--gold); }
 
   .vm-card-icon {
-    width: 44px;
-    height: 44px;
+    width: 40px; height: 40px;
     border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 20px;
-    margin-bottom: 20px;
+    font-size: 18px;
+    margin-bottom: 14px;
   }
 
   .vm-card.vision .vm-card-icon { background: var(--green-light); }
@@ -291,38 +298,27 @@
 
   .vm-card h3 {
     font-family: 'Playfair Display', serif;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 700;
     color: var(--green-deep);
-    margin-bottom: 14px;
+    margin-bottom: 10px;
   }
 
   .vm-card p {
-    font-size: 14px;
+    font-size: 13px;
     color: var(--text-mid);
-    line-height: 1.8;
+    line-height: 1.75;
   }
 
-  /* ── CORE VALUES ── */
+  /* ════════════════════════════
+     CORE VALUES
+  ════════════════════════════ */
   .values-section {
-    margin-top: 72px;
+    margin-top: 48px;
     background: var(--green-deep);
-    border-radius: 16px;
-    padding: 56px 52px;
-    position: relative;
+    border-radius: 14px;
+    padding: 32px 20px;
     overflow: hidden;
-  }
-
-  .values-section::after {
-    content: '"';
-    position: absolute;
-    right: 40px;
-    top: -20px;
-    font-family: 'Playfair Display', serif;
-    font-size: 220px;
-    color: rgba(255,255,255,0.04);
-    line-height: 1;
-    pointer-events: none;
   }
 
   .values-section .section-title { color: #fff; }
@@ -331,78 +327,72 @@
 
   .values-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    position: relative;
-    z-index: 1;
+    grid-template-columns: 1fr;
+    gap: 12px;
   }
 
   .value-item {
-    background: rgba(255,255,255,0.06);
+    background: rgba(255,255,255,0.07);
     border: 1px solid rgba(255,255,255,0.1);
     border-radius: 10px;
-    padding: 28px 24px;
+    padding: 18px 16px;
     display: flex;
-    gap: 18px;
+    gap: 14px;
     align-items: flex-start;
   }
 
   .value-icon {
-    width: 36px;
-    height: 36px;
+    width: 34px; height: 34px;
     background: var(--gold);
     border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    font-size: 16px;
-    color: #fff;
+    font-size: 15px;
   }
 
   .value-text h4 {
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 600;
     color: #fff;
-    margin-bottom: 6px;
-    letter-spacing: 0.3px;
+    margin-bottom: 4px;
   }
 
   .value-text p {
-    font-size: 13px;
+    font-size: 12px;
     color: rgba(255,255,255,0.6);
-    line-height: 1.7;
+    line-height: 1.65;
   }
 
-  /* ── COMMODITIES ── */
-  .commodities-section { margin-top: 72px; }
+  /* ════════════════════════════
+     COMMODITIES
+  ════════════════════════════ */
+  .commodities-section { margin-top: 48px; }
 
-  .commodity-group {
-    margin-bottom: 36px;
-  }
+  .commodity-group { margin-bottom: 26px; }
 
   .commodity-group-header {
     display: flex;
     align-items: center;
-    gap: 14px;
-    margin-bottom: 18px;
+    gap: 12px;
+    margin-bottom: 12px;
   }
 
   .commodity-group-header .icon {
-    width: 40px;
-    height: 40px;
+    width: 36px; height: 36px;
     background: var(--green-light);
-    border-radius: 10px;
+    border-radius: 9px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 18px;
+    font-size: 16px;
     flex-shrink: 0;
   }
 
   .commodity-group-header h3 {
     font-family: 'Playfair Display', serif;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 700;
     color: var(--green-deep);
   }
@@ -410,15 +400,15 @@
   .commodity-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 8px;
   }
 
   .tag {
     background: var(--green-pale);
     border: 1px solid var(--border);
     border-radius: 20px;
-    padding: 7px 18px;
-    font-size: 13px;
+    padding: 6px 14px;
+    font-size: 12px;
     color: var(--green-deep);
     font-weight: 500;
   }
@@ -429,55 +419,55 @@
     color: #7a5010;
   }
 
-  /* ── CONTACT ── */
+  /* ════════════════════════════
+     CONTACT
+  ════════════════════════════ */
   .contact-section {
-    margin-top: 72px;
+    margin-top: 48px;
     background: #fff;
-    border-radius: 16px;
+    border-radius: 14px;
     border: 1px solid var(--border);
-    padding: 52px;
+    padding: 28px 20px;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 48px;
-    align-items: center;
+    grid-template-columns: 1fr;
+    gap: 28px;
   }
 
   .contact-info h2 {
     font-family: 'Playfair Display', serif;
-    font-size: 28px;
+    font-size: 24px;
     font-weight: 700;
     color: var(--green-deep);
-    margin-bottom: 8px;
+    margin-bottom: 6px;
   }
 
-  .contact-info p {
-    font-size: 14px;
+  .contact-info > p {
+    font-size: 13px;
     color: var(--text-muted);
-    margin-bottom: 32px;
+    margin-bottom: 24px;
     line-height: 1.7;
   }
 
   .contact-item {
     display: flex;
-    gap: 14px;
+    gap: 12px;
     align-items: flex-start;
-    margin-bottom: 18px;
+    margin-bottom: 16px;
   }
 
   .contact-item-icon {
-    width: 38px;
-    height: 38px;
+    width: 36px; height: 36px;
     background: var(--green-light);
     border-radius: 9px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 17px;
+    font-size: 16px;
     flex-shrink: 0;
   }
 
-  .contact-item-text .ci-label {
-    font-size: 10px;
+  .ci-label {
+    font-size: 9px;
     text-transform: uppercase;
     letter-spacing: 1.5px;
     color: var(--text-muted);
@@ -485,145 +475,151 @@
     font-weight: 500;
   }
 
-  .contact-item-text .ci-value {
-    font-size: 14px;
+  .ci-value {
+    font-size: 13px;
     color: var(--text-dark);
     font-weight: 500;
+    word-break: break-word;
   }
 
   .contact-cac {
     background: var(--green-pale);
     border: 1px solid var(--border);
     border-radius: 12px;
-    padding: 32px;
+    padding: 24px 20px;
     text-align: center;
   }
 
-  .contact-cac .cert-badge {
+  .cert-badge {
     display: inline-block;
     background: var(--green-deep);
     color: #fff;
-    font-size: 10px;
+    font-size: 9px;
     letter-spacing: 2px;
     text-transform: uppercase;
     font-weight: 600;
-    padding: 8px 18px;
+    padding: 7px 16px;
     border-radius: 4px;
-    margin-bottom: 20px;
+    margin-bottom: 14px;
   }
 
   .contact-cac h3 {
     font-family: 'Playfair Display', serif;
-    font-size: 20px;
+    font-size: 18px;
     color: var(--green-deep);
-    margin-bottom: 10px;
+    margin-bottom: 8px;
   }
 
   .contact-cac p {
-    font-size: 13px;
+    font-size: 12px;
     color: var(--text-muted);
     line-height: 1.7;
   }
 
-  /* ── FOOTER ── */
+  /* ════════════════════════════
+     FOOTER
+  ════════════════════════════ */
   .footer {
     background: var(--green-deep);
     color: rgba(255,255,255,0.5);
     text-align: center;
-    font-size: 12px;
-    padding: 28px;
-    letter-spacing: 0.5px;
+    font-size: 11px;
+    padding: 24px 20px;
+    line-height: 2;
   }
 
   .footer span { color: var(--gold); }
 
-  /* ── UTILITIES ── */
-  .mt-section { margin-top: 72px; }
-  .separator {
-    height: 1px;
-    background: var(--border);
-    margin: 64px 0;
-  }
+  /* ════════════════════════════
+     TABLET — 600px+
+  ════════════════════════════ */
+  @media (min-width: 600px) {
+    .cover-content { padding: 60px 40px 64px; }
+    .cover h1 { font-size: 56px; }
+    .cover-subtitle { font-size: 15px; }
+    .cover-meta { grid-template-columns: repeat(4, auto); gap: 0 36px; }
 
-  /* ── RESPONSIVE: TABLET ── */
-  @media (max-width: 768px) {
-    .cover-content { padding: 56px 36px; }
-    .cover h1 { font-size: 52px; }
-    .cover-year { font-size: 80px; right: 36px; }
-    .cover-meta { gap: 28px; }
-
-    .page { padding: 48px 28px; }
-    .section-title { font-size: 28px; }
-
+    .page { padding: 56px 36px; }
+    .section-title { font-size: 30px; }
     .about-section { padding: 32px 28px; }
     .about-body { font-size: 15px; }
-    .about-stats { grid-template-columns: repeat(3, 1fr); gap: 14px; }
-    .stat-card { padding: 18px 12px; }
-    .stat-card .stat-num { font-size: 28px; }
 
-    .vm-grid { grid-template-columns: 1fr; gap: 20px; }
-
+    .vm-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
+    .values-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
     .values-section { padding: 40px 32px; }
-    .values-grid { grid-template-columns: 1fr; gap: 16px; }
-
-    .contact-section { grid-template-columns: 1fr; gap: 32px; padding: 36px 28px; }
+    .contact-section { grid-template-columns: 1fr 1fr; gap: 32px; padding: 36px 32px; }
   }
 
-  /* ── RESPONSIVE: MOBILE ── */
-  @media (max-width: 480px) {
-    .cover { min-height: 100svh; }
-    .cover-content { padding: 40px 24px; }
-    .cover h1 { font-size: 40px; letter-spacing: -0.5px; }
-    .cover-subtitle { font-size: 14px; margin-bottom: 36px; }
-    .cover-year { display: none; }
-    .cover-stripe { width: 28%; }
-    .cover-meta { gap: 20px; }
-    .cover-meta-item .value { font-size: 13px; }
+  /* ════════════════════════════
+     DESKTOP — 900px+
+  ════════════════════════════ */
+  @media (min-width: 900px) {
+    .cover-accent-top { display: none; }
 
-    .page { padding: 40px 20px; }
-    .section-title { font-size: 24px; margin-bottom: 20px; }
-    .section-label { font-size: 9px; }
-
-    .about-section {
-      padding: 24px 20px;
-      border-left-width: 3px;
+    .cover-stripe {
+      display: block;
+      position: absolute;
+      top: 0; right: 0;
+      width: 38%; height: 100%;
+      background: var(--green-mid);
+      clip-path: polygon(18% 0, 100% 0, 100% 100%, 0% 100%);
     }
-    .about-body { font-size: 14px; line-height: 1.75; }
-    .about-stats { grid-template-columns: 1fr; gap: 12px; margin-top: 28px; }
-    .stat-card { padding: 16px; display: flex; align-items: center; gap: 16px; text-align: left; }
-    .stat-card .stat-num { font-size: 32px; margin-bottom: 0; }
-    .stat-card .stat-label { font-size: 11px; }
 
-    .vm-section { margin-top: 48px; }
-    .vm-grid { gap: 16px; }
-    .vm-card { padding: 24px 20px; }
-
-    .values-section { padding: 32px 20px; border-radius: 12px; }
-    .values-section::after { display: none; }
-    .values-grid { gap: 12px; }
-    .value-item { padding: 20px 16px; gap: 14px; }
-    .value-icon { width: 32px; height: 32px; font-size: 14px; border-radius: 6px; }
-    .value-text h4 { font-size: 13px; }
-    .value-text p { font-size: 12px; }
-
-    .commodities-section { margin-top: 48px; }
-    .commodity-group { margin-bottom: 28px; }
-    .commodity-group-header .icon { width: 34px; height: 34px; font-size: 15px; }
-    .commodity-group-header h3 { font-size: 16px; }
-    .tag { font-size: 12px; padding: 6px 14px; }
-
-    .contact-section {
-      margin-top: 48px;
-      padding: 28px 20px;
-      border-radius: 12px;
+    .cover-gold-bar {
+      display: block;
+      position: absolute;
+      top: 0; right: 0;
+      width: 6px; height: 100%;
+      background: var(--gold);
     }
-    .contact-info h2 { font-size: 22px; }
-    .contact-item-icon { width: 34px; height: 34px; font-size: 15px; border-radius: 8px; }
-    .ci-value { font-size: 13px; }
 
-    .footer { font-size: 11px; padding: 20px 16px; line-height: 1.8; }
+    .cover-year {
+      display: block;
+      position: absolute;
+      top: 56px; right: 72px;
+      font-family: 'Playfair Display', serif;
+      font-size: 120px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.04);
+      line-height: 1;
+      user-select: none;
+      z-index: 1;
+    }
 
-    .mt-section { margin-top: 48px; }
+    .cover-content { padding: 80px 72px; }
+    .cover h1 { font-size: 72px; letter-spacing: -1px; }
+    .cover-subtitle { font-size: 16px; margin-bottom: 56px; }
+    .cover-divider { margin-bottom: 40px; }
+    .cover-meta { grid-template-columns: repeat(4, auto); gap: 0 48px; }
+
+    .page { padding: 72px 56px; }
+    .section-title { font-size: 36px; margin-bottom: 32px; }
+    .section-divider { margin-bottom: 40px; }
+
+    .about-section { padding: 48px 52px; }
+    .about-body { font-size: 16px; max-width: 680px; }
+    .about-stats { gap: 24px; margin-top: 44px; }
+    .stat-card { padding: 24px 20px; }
+    .stat-card .stat-num { font-size: 38px; }
+    .stat-card .stat-num span { font-size: 22px; }
+    .stat-card .stat-label { font-size: 12px; letter-spacing: 1.5px; }
+
+    .vm-section { margin-top: 72px; }
+    .vm-card { padding: 36px 32px; }
+    .vm-card h3 { font-size: 20px; }
+    .vm-card p { font-size: 14px; }
+
+    .values-section { margin-top: 72px; padding: 56px 52px; }
+    .value-text h4 { font-size: 14px; }
+    .value-text p { font-size: 13px; }
+
+    .commodities-section { margin-top: 72px; }
+    .commodity-group { margin-bottom: 36px; }
+    .commodity-group-header h3 { font-size: 18px; }
+
+    .contact-section { margin-top: 72px; padding: 52px; }
+    .contact-info h2 { font-size: 28px; }
+    .ci-value { font-size: 14px; }
   }
 </style>
 </head>
@@ -631,14 +627,13 @@
 
 <!-- COVER -->
 <div class="cover">
-  <svg class="cover-bg-circles" viewBox="0 0 900 700" preserveAspectRatio="xMidYMid slice">
-    <circle cx="780" cy="120" r="220" fill="#2d9e5f"/>
-    <circle cx="820" cy="500" r="160" fill="#2d9e5f"/>
-    <circle cx="100" cy="600" r="120" fill="#2d9e5f"/>
-  </svg>
+  <div class="cover-accent-top"></div>
   <div class="cover-stripe"></div>
   <div class="cover-gold-bar"></div>
   <div class="cover-year">2020</div>
+  <div class="cover-circle-1"></div>
+  <div class="cover-circle-2"></div>
+  <div class="cover-circle-3"></div>
 
   <div class="cover-content">
     <div class="cover-tag">Company Profile</div>
@@ -656,7 +651,7 @@
       </div>
       <div class="cover-meta-item">
         <span class="label">Location</span>
-        <span class="value">Kaduna State, Nigeria</span>
+        <span class="value">Kaduna State</span>
       </div>
       <div class="cover-meta-item">
         <span class="label">Contact</span>
@@ -701,7 +696,6 @@
     <div class="section-label">Direction &amp; Purpose</div>
     <div class="section-title">Vision &amp; Mission</div>
     <div class="section-divider"></div>
-
     <div class="vm-grid">
       <div class="vm-card vision">
         <div class="vm-card-icon">🌱</div>
@@ -827,7 +821,7 @@
   </div>
 
   <!-- CONTACT -->
-  <div class="contact-section mt-section">
+  <div class="contact-section">
     <div class="contact-info">
       <h2>Get in Touch</h2>
       <p>Ready to source premium agricultural commodities or discuss logistics solutions? We'd love to hear from you.</p>
@@ -836,7 +830,7 @@
         <div class="contact-item-icon">📍</div>
         <div class="contact-item-text">
           <div class="ci-label">Business Address</div>
-          <div class="ci-value">No. C7 Lira House, Kinkinau,<br>T/Wada, Kaduna State, Nigeria</div>
+          <div class="ci-value">No. C7 Lira House, Kinkinau, T/Wada, Kaduna State, Nigeria</div>
         </div>
       </div>
 
@@ -868,7 +862,9 @@
 
 <!-- FOOTER -->
 <div class="footer">
-  &copy; 2025 <span>Ahsmir Ventures</span> &nbsp;|&nbsp; No. C7 Lira House, Kinkinau, T/Wada, Kaduna State &nbsp;|&nbsp; 08035803374
+  &copy; 2025 <span>Ahsmir Ventures</span><br>
+  No. C7 Lira House, Kinkinau, T/Wada, Kaduna State<br>
+  08035803374 &nbsp;·&nbsp; ahmedmijinyawa098@gmail.com
 </div>
 
 </body>
