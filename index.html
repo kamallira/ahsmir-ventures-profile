@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ahsmir Ventures – Company Profile</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --green-deep: #0f4a2a;
+    --green-mid: #1a6e3f;
+    --green-fresh: #2d9e5f;
+    --green-light: #e6f5ec;
+    --green-pale: #f4fbf6;
+    --gold: #c8922a;
+    --gold-light: #f5e9d3;
+    --off-white: #fafaf8;
+    --text-dark: #1a1a18;
+    --text-mid: #3d3d38;
+    --text-muted: #6b6b64;
+    --border: #d4ddd6;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--off-white);
+    color: var(--text-dark);
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  /* ── COVER PAGE ── */
+  .cover {
+    min-height: 100vh;
+    background: var(--green-deep);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow: hidden;
+    page-break-after: always;
+  }
+
+  .cover-bg-circles {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+  .cover-bg-circles circle { opacity: 0.07; }
+
+  .cover-stripe {
+    position: absolute;
+    top: 0; right: 0;
+    width: 38%;
+    height: 100%;
+    background: var(--green-mid);
+    clip-path: polygon(18% 0, 100% 0, 100% 100%, 0% 100%);
+  }
+
+  .cover-gold-bar {
+    position: absolute;
+    top: 0; right: 0;
+    width: 6px;
+    height: 100%;
+    background: var(--gold);
+  }
+
+  .cover-content {
+    position: relative;
+    z-index: 2;
+    padding: 80px 72px;
+  }
+
+  .cover-tag {
+    display: inline-block;
+    background: var(--gold);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 2px;
+    margin-bottom: 28px;
+  }
+
+  .cover h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 72px;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.05;
+    margin-bottom: 12px;
+    letter-spacing: -1px;
+  }
+
+  .cover h1 span {
+    color: var(--gold);
+  }
+
+  .cover-subtitle {
+    font-size: 16px;
+    color: rgba(255,255,255,0.65);
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    margin-bottom: 56px;
+    max-width: 400px;
+  }
+
+  .cover-divider {
+    width: 56px;
+    height: 3px;
+    background: var(--gold);
+    margin-bottom: 40px;
+  }
+
+  .cover-meta {
+    display: flex;
+    gap: 48px;
+    flex-wrap: wrap;
+  }
+
+  .cover-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .cover-meta-item .label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    font-weight: 500;
+  }
+
+  .cover-meta-item .value {
+    font-size: 14px;
+    color: rgba(255,255,255,0.85);
+    font-weight: 400;
+  }
+
+  .cover-year {
+    position: absolute;
+    top: 56px;
+    right: 72px;
+    font-family: 'Playfair Display', serif;
+    font-size: 120px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.04);
+    line-height: 1;
+    z-index: 1;
+    user-select: none;
+  }
+
+  /* ── LAYOUT ── */
+  .page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 72px 56px;
+  }
+
+  /* ── SECTION HEADERS ── */
+  .section-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--green-deep);
+    line-height: 1.2;
+    margin-bottom: 32px;
+  }
+
+  .section-divider {
+    width: 40px;
+    height: 3px;
+    background: var(--green-fresh);
+    margin-bottom: 40px;
+  }
+
+  /* ── ABOUT ── */
+  .about-section {
+    background: #fff;
+    border-left: 4px solid var(--green-fresh);
+    padding: 48px 52px;
+    border-radius: 0 12px 12px 0;
+    box-shadow: 0 2px 24px rgba(15,74,42,0.06);
+  }
+
+  .about-body {
+    font-size: 16px;
+    color: var(--text-mid);
+    line-height: 1.85;
+    max-width: 680px;
+  }
+
+  .about-body p + p { margin-top: 18px; }
+
+  .about-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 44px;
+  }
+
+  .stat-card {
+    background: var(--green-pale);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 24px 20px;
+    text-align: center;
+  }
+
+  .stat-card .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 38px;
+    font-weight: 700;
+    color: var(--green-deep);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .stat-card .stat-num span {
+    font-size: 22px;
+    color: var(--gold);
+  }
+
+  .stat-card .stat-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+
+  /* ── VISION MISSION ── */
+  .vm-section {
+    margin-top: 72px;
+  }
+
+  .vm-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    margin-top: 8px;
+  }
+
+  .vm-card {
+    background: #fff;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    padding: 36px 32px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .vm-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 4px;
+  }
+
+  .vm-card.vision::before { background: var(--green-fresh); }
+  .vm-card.mission::before { background: var(--gold); }
+
+  .vm-card-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  .vm-card.vision .vm-card-icon { background: var(--green-light); }
+  .vm-card.mission .vm-card-icon { background: var(--gold-light); }
+
+  .vm-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--green-deep);
+    margin-bottom: 14px;
+  }
+
+  .vm-card p {
+    font-size: 14px;
+    color: var(--text-mid);
+    line-height: 1.8;
+  }
+
+  /* ── CORE VALUES ── */
+  .values-section {
+    margin-top: 72px;
+    background: var(--green-deep);
+    border-radius: 16px;
+    padding: 56px 52px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .values-section::after {
+    content: '"';
+    position: absolute;
+    right: 40px;
+    top: -20px;
+    font-family: 'Playfair Display', serif;
+    font-size: 220px;
+    color: rgba(255,255,255,0.04);
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .values-section .section-title { color: #fff; }
+  .values-section .section-label { color: var(--gold); }
+  .values-section .section-divider { background: var(--gold); }
+
+  .values-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .value-item {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px;
+    padding: 28px 24px;
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+  }
+
+  .value-icon {
+    width: 36px;
+    height: 36px;
+    background: var(--gold);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 16px;
+    color: #fff;
+  }
+
+  .value-text h4 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 6px;
+    letter-spacing: 0.3px;
+  }
+
+  .value-text p {
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.7;
+  }
+
+  /* ── COMMODITIES ── */
+  .commodities-section { margin-top: 72px; }
+
+  .commodity-group {
+    margin-bottom: 36px;
+  }
+
+  .commodity-group-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+
+  .commodity-group-header .icon {
+    width: 40px;
+    height: 40px;
+    background: var(--green-light);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .commodity-group-header h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--green-deep);
+  }
+
+  .commodity-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .tag {
+    background: var(--green-pale);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 7px 18px;
+    font-size: 13px;
+    color: var(--green-deep);
+    font-weight: 500;
+  }
+
+  .tag.gold {
+    background: var(--gold-light);
+    border-color: #e0c090;
+    color: #7a5010;
+  }
+
+  /* ── CONTACT ── */
+  .contact-section {
+    margin-top: 72px;
+    background: #fff;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    padding: 52px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+
+  .contact-info h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--green-deep);
+    margin-bottom: 8px;
+  }
+
+  .contact-info p {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 32px;
+    line-height: 1.7;
+  }
+
+  .contact-item {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    margin-bottom: 18px;
+  }
+
+  .contact-item-icon {
+    width: 38px;
+    height: 38px;
+    background: var(--green-light);
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+    flex-shrink: 0;
+  }
+
+  .contact-item-text .ci-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-muted);
+    margin-bottom: 2px;
+    font-weight: 500;
+  }
+
+  .contact-item-text .ci-value {
+    font-size: 14px;
+    color: var(--text-dark);
+    font-weight: 500;
+  }
+
+  .contact-cac {
+    background: var(--green-pale);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 32px;
+    text-align: center;
+  }
+
+  .contact-cac .cert-badge {
+    display: inline-block;
+    background: var(--green-deep);
+    color: #fff;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 8px 18px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+  }
+
+  .contact-cac h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: var(--green-deep);
+    margin-bottom: 10px;
+  }
+
+  .contact-cac p {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--green-deep);
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    font-size: 12px;
+    padding: 28px;
+    letter-spacing: 0.5px;
+  }
+
+  .footer span { color: var(--gold); }
+
+  /* ── UTILITIES ── */
+  .mt-section { margin-top: 72px; }
+  .separator {
+    height: 1px;
+    background: var(--border);
+    margin: 64px 0;
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <svg class="cover-bg-circles" viewBox="0 0 900 700" preserveAspectRatio="xMidYMid slice">
+    <circle cx="780" cy="120" r="220" fill="#2d9e5f"/>
+    <circle cx="820" cy="500" r="160" fill="#2d9e5f"/>
+    <circle cx="100" cy="600" r="120" fill="#2d9e5f"/>
+  </svg>
+  <div class="cover-stripe"></div>
+  <div class="cover-gold-bar"></div>
+  <div class="cover-year">2020</div>
+
+  <div class="cover-content">
+    <div class="cover-tag">Company Profile</div>
+    <h1>AHSMIR<br><span>VENTURES</span></h1>
+    <p class="cover-subtitle">Premium Agricultural Commodities &amp; Logistics Solutions across Nigeria</p>
+    <div class="cover-divider"></div>
+    <div class="cover-meta">
+      <div class="cover-meta-item">
+        <span class="label">Established</span>
+        <span class="value">January 2020</span>
+      </div>
+      <div class="cover-meta-item">
+        <span class="label">Registration</span>
+        <span class="value">CAC Nigeria</span>
+      </div>
+      <div class="cover-meta-item">
+        <span class="label">Location</span>
+        <span class="value">Kaduna State, Nigeria</span>
+      </div>
+      <div class="cover-meta-item">
+        <span class="label">Contact</span>
+        <span class="value">08035803374</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="page">
+
+  <!-- ABOUT US -->
+  <div class="section-label">Who We Are</div>
+  <div class="section-title">About Ahsmir Ventures</div>
+  <div class="section-divider"></div>
+
+  <div class="about-section">
+    <div class="about-body">
+      <p>Ahsmir Ventures is a registered general merchandise and logistics enterprise, certified by the Corporate Affairs Commission (CAC) of Nigeria. Founded in January 2020 and headquartered in Kaduna State, we have grown into a trusted name in Nigeria's agribusiness landscape.</p>
+      <p>We specialize in the sourcing, supply, marketing, and distribution of premium agricultural commodities and fertilizers, supported by a comprehensive end-to-end logistics infrastructure. Our deep roots in northern Nigeria's agricultural belt give us unmatched access to quality produce — from staple grains to specialty superfoods and premium spices.</p>
+      <p>We serve a diverse clientele including food processors, exporters, government agencies, NGOs, and institutional buyers, delivering consistently on quality, timeliness, and transparency.</p>
+    </div>
+    <div class="about-stats">
+      <div class="stat-card">
+        <div class="stat-num">5<span>+</span></div>
+        <div class="stat-label">Years in Operation</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">20<span>+</span></div>
+        <div class="stat-label">Commodity Lines</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">CAC</div>
+        <div class="stat-label">Certified Enterprise</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VISION & MISSION -->
+  <div class="vm-section">
+    <div class="section-label">Direction &amp; Purpose</div>
+    <div class="section-title">Vision &amp; Mission</div>
+    <div class="section-divider"></div>
+
+    <div class="vm-grid">
+      <div class="vm-card vision">
+        <div class="vm-card-icon">🌱</div>
+        <h3>Our Vision</h3>
+        <p>To drive sustainable growth in Nigeria's agribusiness sector through an integrated network of premium commodity sourcing, reliable logistics, and dependable trade solutions that connect farmers to markets across the country and beyond.</p>
+      </div>
+      <div class="vm-card mission">
+        <div class="vm-card-icon">🎯</div>
+        <h3>Our Mission</h3>
+        <p>To deliver premium agricultural commodities and logistics solutions that unlock Nigeria's agricultural potential — reducing post-harvest losses, enhancing food security, and promoting environmental sustainability through rigorous value addition across the supply chain.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CORE VALUES -->
+  <div class="values-section">
+    <div class="section-label">What Drives Us</div>
+    <div class="section-title">Our Core Values</div>
+    <div class="section-divider"></div>
+    <div class="values-grid">
+      <div class="value-item">
+        <div class="value-icon">🤝</div>
+        <div class="value-text">
+          <h4>Partnership &amp; Trust</h4>
+          <p>We build long-lasting, mutually beneficial partnerships with clients, farmers, and stakeholders grounded in trust and mutual respect.</p>
+        </div>
+      </div>
+      <div class="value-item">
+        <div class="value-icon">🔗</div>
+        <div class="value-text">
+          <h4>Collaborative Teamwork</h4>
+          <p>We operate as a cohesive network, combining local agricultural insights with robust logistics capabilities to meet shared goals.</p>
+        </div>
+      </div>
+      <div class="value-item">
+        <div class="value-icon">✅</div>
+        <div class="value-text">
+          <h4>Absolute Accountability</h4>
+          <p>We take full ownership of our supply chain, ensuring transparency, safety, and responsibility at every stage of service delivery.</p>
+        </div>
+      </div>
+      <div class="value-item">
+        <div class="value-icon">⚡</div>
+        <div class="value-text">
+          <h4>Precision Execution</h4>
+          <p>We are fiercely committed to reliability — delivering strictly to client specification, on time, every time.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMMODITIES -->
+  <div class="commodities-section">
+    <div class="section-label">What We Offer</div>
+    <div class="section-title">Our Commodities &amp; Services</div>
+    <div class="section-divider"></div>
+
+    <div class="commodity-group">
+      <div class="commodity-group-header">
+        <div class="icon">🌾</div>
+        <h3>Grains &amp; Staples</h3>
+      </div>
+      <div class="commodity-tags">
+        <span class="tag">Maize</span>
+        <span class="tag">Sorghum</span>
+        <span class="tag">Millet</span>
+        <span class="tag">Rice</span>
+        <span class="tag">Wheat</span>
+      </div>
+    </div>
+
+    <div class="commodity-group">
+      <div class="commodity-group-header">
+        <div class="icon">🫘</div>
+        <h3>Legumes &amp; Oilseeds</h3>
+      </div>
+      <div class="commodity-tags">
+        <span class="tag">Soyabeans</span>
+        <span class="tag">Sesame Seeds</span>
+        <span class="tag">Beans</span>
+        <span class="tag">Groundnut</span>
+      </div>
+    </div>
+
+    <div class="commodity-group">
+      <div class="commodity-group-header">
+        <div class="icon">🌿</div>
+        <h3>Specialty Superfoods</h3>
+      </div>
+      <div class="commodity-tags">
+        <span class="tag">Moringa Seeds</span>
+        <span class="tag">Cocoa Beans</span>
+        <span class="tag">Cassava</span>
+        <span class="tag">Tigernuts</span>
+        <span class="tag">Dates</span>
+      </div>
+    </div>
+
+    <div class="commodity-group">
+      <div class="commodity-group-header">
+        <div class="icon">🌶️</div>
+        <h3>Premium Spices</h3>
+      </div>
+      <div class="commodity-tags">
+        <span class="tag gold">Ginger</span>
+        <span class="tag gold">Turmeric</span>
+        <span class="tag gold">Garlic</span>
+        <span class="tag gold">Cloves</span>
+        <span class="tag gold">Red Chilli Pepper</span>
+      </div>
+    </div>
+
+    <div class="commodity-group">
+      <div class="commodity-group-header">
+        <div class="icon">🧪</div>
+        <h3>Agricultural Inputs</h3>
+      </div>
+      <div class="commodity-tags">
+        <span class="tag">High-Grade Agro-Fertilizers</span>
+        <span class="tag">Protective Agro-Chemicals</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="contact-section mt-section">
+    <div class="contact-info">
+      <h2>Get in Touch</h2>
+      <p>Ready to source premium agricultural commodities or discuss logistics solutions? We'd love to hear from you.</p>
+
+      <div class="contact-item">
+        <div class="contact-item-icon">📍</div>
+        <div class="contact-item-text">
+          <div class="ci-label">Business Address</div>
+          <div class="ci-value">No. C7 Lira House, Kinkinau,<br>T/Wada, Kaduna State, Nigeria</div>
+        </div>
+      </div>
+
+      <div class="contact-item">
+        <div class="contact-item-icon">📞</div>
+        <div class="contact-item-text">
+          <div class="ci-label">Telephone</div>
+          <div class="ci-value">08035803374</div>
+        </div>
+      </div>
+
+      <div class="contact-item">
+        <div class="contact-item-icon">✉️</div>
+        <div class="contact-item-text">
+          <div class="ci-label">Email Address</div>
+          <div class="ci-value">ahmedmijinyawa098@gmail.com</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-cac">
+      <div class="cert-badge">CAC Certified</div>
+      <h3>Registered Enterprise</h3>
+      <p>Ahsmir Ventures is a fully registered and certified business entity under the Corporate Affairs Commission (CAC) of the Federal Republic of Nigeria.</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  &copy; 2025 <span>Ahsmir Ventures</span> &nbsp;|&nbsp; No. C7 Lira House, Kinkinau, T/Wada, Kaduna State &nbsp;|&nbsp; 08035803374
+</div>
+
+</body>
+</html>
